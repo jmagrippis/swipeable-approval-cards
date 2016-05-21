@@ -1,0 +1,8 @@
+{
+  "sourceBase": "src",
+  "testBase": "test",
+  "smartPath": "containers",
+  "dumbPath": "components",
+  "reducerPath": "reducers",
+  "fileCasing": "default"
+}
