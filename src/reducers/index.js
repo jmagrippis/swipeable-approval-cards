@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import employees from './employees'
+import visibilityFilter from './visibilityFilter'
 
 const rootReducer = combineReducers({
-  employees
+  employees,
+  visibilityFilter
 })
 
 export default rootReducer

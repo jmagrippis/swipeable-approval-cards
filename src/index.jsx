@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
@@ -9,20 +10,18 @@ import Root from './layouts/Root'
 const store = configureStore()
 
 render(
-  <AppContainer
-    component={Root}
-    props={{ store }}
-  />,
+  <AppContainer>
+    <Root store={store} />
+  </AppContainer>,
   document.getElementById('approval-app')
 )
 
 if (module.hot) {
   module.hot.accept('./layouts/Root', () => {
     render(
-      <AppContainer
-        component={require('./layouts/Root').default}
-        props={{ store }}
-      />,
+      <AppContainer>
+        <Root store={store} />
+      </AppContainer>,
     document.getElementById('approval-app')
     )
   })
