@@ -4,7 +4,8 @@ import { css } from 'aphrodite'
 import StarRating from './StarRating'
 import styles from '../resources/styles'
 
-const articleClasses = css(styles.mw6, styles.center, styles.bgWhite, styles.br3, styles.mv3, styles.pa1, styles.pa2Ns, styles.ba, styles.bBlack10, styles.shadow1Black5)
+const articleClasses = css(styles.mw6, styles.center, styles.bgWhite, styles.br3, styles.mv3,
+  styles.pa1, styles.pa2Ns, styles.ba, styles.bBlack10, styles.shadow1Black5, styles.cPointer)
 
 const StackableCard = ({ avatar, name, rating }) => (
   <article className={articleClasses}>

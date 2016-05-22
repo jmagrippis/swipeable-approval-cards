@@ -18,7 +18,10 @@ const depthStyles = (position, depth) => {
 const StackableCardList = ({ cards }) => {
   let i = -1
   return (
-    <ul className={css(styles.relative, styles.list, styles.pl0, styles.mw6, styles.center)}>
+    <ul
+      className={css(styles.relative, styles.list, styles.pl0, styles.center, styles.mt0, styles.mb1)}
+      style={{height: (43 + 1.5 * cards.size) + 'rem'}}
+    >
       {cards.map((card, id) => {
         i++
         return (

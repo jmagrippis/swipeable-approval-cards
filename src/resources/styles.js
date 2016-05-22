@@ -1,5 +1,9 @@
 import { StyleSheet } from 'aphrodite'
 
+const orangeyYellow = '#F6A247'
+const black60 = 'rgba( 0, 0, 0, .6 )'
+const warning = '#FF5722'
+
 const borderColours = {
   bBlack10: {
     borderColor: 'rgba( 0, 0, 0, .1 )'
@@ -9,12 +13,42 @@ const borderColours = {
 const borderRadius = {
   br3: {
     borderRadius: '.5rem'
+  },
+  br100: {
+    borderRadius: '100%'
   }
 }
 
 const borders = {
-  borderStyle: 'solid',
-  borderWidth: '1px'
+  ba: {
+    borderStyle: 'solid',
+    borderWidth: '1px'
+  },
+  ba1: {
+    borderStyle: 'solid',
+    borderWidth: '0.25rem'
+  }
+}
+
+const cursors = {
+  cPointer: {
+    cursor: 'pointer'
+  }
+}
+
+const flexbox = {
+  flexc: {
+    display: 'flex'
+  },
+  flexCol: {
+    flexDirection: 'column'
+  },
+  flexAC: {
+    alignItems: 'center'
+  },
+  flexSA: {
+    justifyContent: 'space-around'
+  }
 }
 
 const fontFamilies = {
@@ -29,6 +63,25 @@ const heights = {
   },
   vh100: {
     minHeight: '100vh'
+  }
+}
+
+const hovers = {
+  cblack60OrangeyYellow: {
+    color: black60,
+    transition: 'color .15s ease-in',
+    ':hover': {
+      color: orangeyYellow,
+      transition: 'color .15s ease-in'
+    }
+  },
+  cblack60Warning: {
+    color: black60,
+    transition: 'color .15s ease-in',
+    ':hover': {
+      color: warning,
+      transition: 'color .15s ease-in'
+    }
   }
 }
 
@@ -73,7 +126,7 @@ const skins = {
     color: 'rgba(0, 0, 0, .7)'
   },
   orangeyYellow: {
-    color: '#F6A247'
+    color: orangeyYellow
   }
 }
 
@@ -81,6 +134,9 @@ const spacing = {
   mv3: {
     marginTop: '1rem',
     marginBottom: '1rem'
+  },
+  mt0: {
+    marginTop: 0
   },
   mt1: {
     marginTop: '.25rem'
@@ -93,6 +149,12 @@ const spacing = {
   },
   mb3: {
     marginBottom: '1rem'
+  },
+  mb4: {
+    marginBottom: '2rem'
+  },
+  mb1: {
+    marginBottom: '.25rem'
   },
   mb5: {
     marginBottom: '4rem'
@@ -141,6 +203,9 @@ const typeScale = {
   fSubheadline: {
     fontSize: '5rem'
   },
+  f1: {
+    fontSize: '3rem'
+  },
   f2: {
     fontSize: '2.25rem'
   }
@@ -153,13 +218,22 @@ const utilities = {
   }
 }
 
+const widths = {
+  w100: {
+    width: '100%'
+  }
+}
+
 const styles = StyleSheet.create(Object.assign(
   {},
   borderColours,
   borderRadius,
   borders,
+  cursors,
+  flexbox,
   fontFamilies,
   heights,
+  hovers,
   lists,
   maxWidths,
   positioning,
@@ -168,7 +242,8 @@ const styles = StyleSheet.create(Object.assign(
   spacing,
   textAlign,
   typeScale,
-  utilities
+  utilities,
+  widths
 ))
 
 export default styles
