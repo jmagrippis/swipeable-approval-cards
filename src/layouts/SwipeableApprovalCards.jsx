@@ -3,7 +3,7 @@ import { css } from 'aphrodite'
 import { Map } from 'immutable'
 
 import StackableCardList from '../components/StackableCardList'
-import IconButton from '../components/IconButton'
+import ApprovalButtons from '../components/ApprovalButtons'
 import styles from '../resources/styles'
 
 let cards = Map({
@@ -34,10 +34,7 @@ class SwipeableApprovalCards extends Component {
         <h1 className={css(styles.fSubheadline, styles.mt3, styles.mb5)}>ROTA</h1>
         <div className={css(styles.mw6, styles.w100)}>
           <StackableCardList cards={cards} />
-          <div className={css(styles.flexc, styles.flexSA, styles.mb4)}>
-            <IconButton iconName={'close'} className={css(styles.f1, styles.cblack60Warning, styles.pa1, styles.ba1, styles.br100)} onClick={() => { console.log('nope!') }} />
-            <IconButton iconName={'check'} className={css(styles.f1, styles.cblack60OrangeyYellow, styles.pa1, styles.ba1, styles.br100)} onClick={() => { console.log('yep!') }} />
-          </div>
+          <ApprovalButtons accept={() => { console.log('we accept!') }} reject={() => { console.log('we reject!') }} />
         </div>
       </div>
     )
