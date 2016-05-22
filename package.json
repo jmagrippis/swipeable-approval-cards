@@ -9,6 +9,10 @@
     "test:watch": "npm run test -- --watch --watch-extensions jsx",
     "build": "NODE_ENV=production webpack -p"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmagrippis/swipeable-approval-cards"
+  },
   "dependencies": {
     "aphrodite": "^0.3.0",
     "immutable": "^3.0.0",
