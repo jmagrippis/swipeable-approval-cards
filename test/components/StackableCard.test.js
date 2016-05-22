@@ -7,12 +7,13 @@ import StackableCard from '../../src/components/StackableCard'
 describe('(Component) StackableCard', function () {
   it('should print out the given name in a h3', function () {
     let avatar = 'test.png'
+    let rating = 4.2
     let name = 'Timmy Tester'
-    let wrapper = shallow(<StackableCard name={name} avatar={avatar} />)
+    let wrapper = shallow(<StackableCard name={name} avatar={avatar} rating={rating} />)
     expect(wrapper.find('h3').text()).to.equal(name)
 
     name = 'Elena Example'
-    wrapper = shallow(<StackableCard name={name} avatar={avatar} />)
+    wrapper = shallow(<StackableCard name={name} avatar={avatar} rating={rating} />)
     expect(wrapper.find('h3').text()).to.equal(name)
   })
 })

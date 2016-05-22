@@ -32,12 +32,27 @@ const heights = {
   }
 }
 
+const lists = {
+  list: {
+    listStyleType: 'none'
+  }
+}
+
 const maxWidths = {
   mw6: {
     maxWidth: '32rem'
   },
   mw100: {
     maxWidth: '100%'
+  }
+}
+
+const positioning = {
+  relative: {
+    position: 'relative'
+  },
+  absolute: {
+    position: 'absolute'
   }
 }
 
@@ -98,6 +113,9 @@ const spacing = {
     paddingLeft: '.5rem',
     paddingRight: '.5rem'
   },
+  pl0: {
+    paddingLeft: '0'
+  },
   pa2Ns: {
     '@media screen and (min-width: 48em)': {
       padding: '.5rem'
@@ -142,7 +160,9 @@ const styles = StyleSheet.create(Object.assign(
   borders,
   fontFamilies,
   heights,
+  lists,
   maxWidths,
+  positioning,
   shadows,
   skins,
   spacing,
