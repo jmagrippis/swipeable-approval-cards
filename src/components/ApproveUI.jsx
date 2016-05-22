@@ -5,7 +5,11 @@ import ApprovalButtons from '../components/ApprovalButtons'
 
 const renderUI = (employees, assess, visibleId) => (
   <div>
-    <StackableCardList cards={employees.take(3)} />
+    <StackableCardList
+      cards={employees.take(3)}
+      onSwipeRight={() => assess(visibleId, 'approved')}
+      onSwipeLeft={() => assess(visibleId, 'rejected')}
+    />
     <ApprovalButtons
       accept={() => assess(visibleId, 'approved')}
       reject={() => assess(visibleId, 'rejected')}

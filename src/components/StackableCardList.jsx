@@ -15,7 +15,7 @@ const depthStyles = (position, depth) => {
   return styles
 }
 
-const StackableCardList = ({ cards }) => {
+const StackableCardList = ({ cards, onSwipeRight, onSwipeLeft }) => {
   let i = -1
   return (
     <ul
@@ -26,7 +26,7 @@ const StackableCardList = ({ cards }) => {
         i++
         return (
           <li key={id} className={css(styles.absolute)} style={depthStyles(i, cards.size)}>
-            <StackableCard {...card.toObject()} />
+            <StackableCard {...card.toObject()} swipeable={i === 0} onSwipeRight={onSwipeRight} onSwipeLeft={onSwipeLeft} />
           </li>
         )
       }).toArray()}
@@ -35,7 +35,9 @@ const StackableCardList = ({ cards }) => {
 }
 
 StackableCardList.propTypes = {
-  cards: PropTypes.object.isRequired
+  cards: PropTypes.object.isRequired,
+  onSwipeRight: PropTypes.func,
+  onSwipeLeft: PropTypes.func
 }
 
 export default StackableCardList
