@@ -1,3 +1,5 @@
+var path = require('path')
+
 module.exports = {
   description() {
     return 'Generates a stateless (dumb / pure) component'
@@ -5,7 +7,7 @@ module.exports = {
   fileMapTokens() {
     return {
       __dumb__: (options) => {
-        return options.settings.getSetting('dumbPath')
+        return path.join(options.settings.getSetting('sourceBase'), '/', options.settings.getSetting('dumbPath'))
       }
     }
   }

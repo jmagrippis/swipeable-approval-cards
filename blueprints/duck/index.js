@@ -1,3 +1,5 @@
+var path = require('path')
+
 module.exports = {
   description() {
     return 'Generates a Redux reducer, that also exports its actions and constants'
@@ -5,7 +7,7 @@ module.exports = {
   fileMapTokens() {
     return {
       __reducer__: (options) => {
-        return options.settings.getSetting('sourceBase') + '/' + options.settings.getSetting('reducerPath')
+        return path.join(options.settings.getSetting('sourceBase'), '/', options.settings.getSetting('reducerPath'))
       }
     }
   }
