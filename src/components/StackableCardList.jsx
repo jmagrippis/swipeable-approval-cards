@@ -26,7 +26,7 @@ const StackableCardList = ({ cards }) => {
         i++
         return (
           <li key={id} className={css(styles.absolute)} style={depthStyles(i, cards.size)}>
-            <StackableCard {...card} />
+            <StackableCard {...card.toObject()} />
           </li>
         )
       }).toArray()}

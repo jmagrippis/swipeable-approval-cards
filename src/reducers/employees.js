@@ -1,4 +1,6 @@
-import { Map } from 'immutable'
+import { Iterable, Map } from 'immutable'
+
+import Employee from '../records/Employee'
 
 // Constants
 export const FETCH_EMPLOYEES = 'FETCH_EMPLOYEES'
@@ -37,9 +39,40 @@ const mockFetchEmployees = (endpoint) => {
     ok: true,
     json: () => Promise.resolve({
       // we imagine the backend would gives us the "next cursor", or the "next offset" we would like to use
-      nextOffset: 10,
+      nextOffset: 3,
       // and of course an array of employees according to our query parameters
-      employees: []
+      employees: {
+        15: {
+          id: 15,
+          name: 'Timmy Tester',
+          avatar: 'assets/images/1/avatar.jpg',
+          rating: 3.3
+        },
+        27: {
+          id: 27,
+          name: 'Elena Example',
+          avatar: 'assets/images/2/avatar.jpg',
+          rating: 4.2
+        },
+        40: {
+          id: 40,
+          name: 'Alex Average',
+          avatar: 'assets/images/3/avatar.jpg',
+          rating: 2.5
+        },
+        44: {
+          id: 15,
+          name: 'Bob Burger',
+          avatar: 'assets/images/4/avatar.jpg',
+          rating: 3.3
+        },
+        51: {
+          id: 27,
+          name: 'Camille Comely',
+          avatar: 'assets/images/2/avatar.jpg',
+          rating: 4.2
+        }
+      }
     })
   })
 }
@@ -108,7 +141,9 @@ export const employees = (state = defaultState, action) => {
     case FETCH_EMPLOYEES_REQUEST:
       return state.set('isFetching', true)
     case ADD_EMPLOYEES:
-      return state.set('employees', state.get('employees').merge(action.employees))
+      const data = Iterable.isIterable(action.employees) ? action.employees : Map(action.employees)
+      const newEmployees = data.map(employee => new Employee(employee))
+      return state.set('employees', state.get('employees').merge(newEmployees))
     case ASSESS_EMPLOYEE:
       let e = state.get('employees').get(String(action.id))
       if (!e) return state

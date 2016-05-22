@@ -3,6 +3,8 @@ assessEmployee, fetchEmployeesSuccess, fetchEmployeesFailure } from '../../src/r
 import { expect } from 'chai'
 import { Map } from 'immutable'
 
+import Employee from '../../src/records/Employee'
+
 describe('(Redux) employees', () => {
   describe('(Reducer)', () => {
     it('sets up initial state', () => {
@@ -32,7 +34,21 @@ describe('(Redux) employees', () => {
       })
       let action = addEmployees(employees)
       let nextState = reducer(defaultState, action)
-      expect(nextState.get('employees')).to.equal(employees)
+      let expected = Map({
+        15: new Employee({
+          id: 15,
+          name: 'Timmy Tester',
+          avatar: 'profile15.png',
+          rating: 4.2
+        }),
+        27: new Employee({
+          id: 27,
+          name: 'Elena Example',
+          avatar: 'profile27.png',
+          rating: 4.8
+        })
+      })
+      expect(nextState.get('employees')).to.equal(expected)
 
       const moreEmployees = Map({
         15: {
@@ -50,18 +66,70 @@ describe('(Redux) employees', () => {
       })
 
       action = addEmployees(moreEmployees)
-      let expected = Map({
-        15: {
+      expected = Map({
+        15: new Employee({
           id: 15,
           name: 'Timmy Tester',
           avatar: 'profile15b.png',
           rating: 4.1
+        }),
+        27: new Employee({
+          id: 27,
+          name: 'Elena Example',
+          avatar: 'profile27.png',
+          rating: 4.8
+        }),
+        40: new Employee({
+          id: 40,
+          name: 'Alex Average',
+          avatar: 'profile40.png',
+          rating: 2.5
+        })
+      })
+
+      expect(reducer(nextState, action).get('employees').toJS()).to.deep.equal(expected.toJS())
+    })
+
+    it('adds or updates employees in the existing map of employees even with plain JS objects', () => {
+      const employees = {
+        15: {
+          id: 15,
+          name: 'Timmy Tester',
+          avatar: 'profile15.png',
+          rating: 4.2
         },
         27: {
           id: 27,
           name: 'Elena Example',
           avatar: 'profile27.png',
           rating: 4.8
+        }
+      }
+
+      let action = addEmployees(employees)
+      let nextState = reducer(defaultState, action)
+      let expected = Map({
+        15: new Employee({
+          id: 15,
+          name: 'Timmy Tester',
+          avatar: 'profile15.png',
+          rating: 4.2
+        }),
+        27: new Employee({
+          id: 27,
+          name: 'Elena Example',
+          avatar: 'profile27.png',
+          rating: 4.8
+        })
+      })
+      expect(nextState.get('employees')).to.equal(expected)
+
+      const moreEmployees = {
+        15: {
+          id: 15,
+          name: 'Timmy Tester',
+          avatar: 'profile15b.png',
+          rating: 4.1
         },
         40: {
           id: 40,
@@ -69,6 +137,28 @@ describe('(Redux) employees', () => {
           avatar: 'profile40.png',
           rating: 2.5
         }
+      }
+
+      action = addEmployees(moreEmployees)
+      expected = Map({
+        15: new Employee({
+          id: 15,
+          name: 'Timmy Tester',
+          avatar: 'profile15b.png',
+          rating: 4.1
+        }),
+        27: new Employee({
+          id: 27,
+          name: 'Elena Example',
+          avatar: 'profile27.png',
+          rating: 4.8
+        }),
+        40: new Employee({
+          id: 40,
+          name: 'Alex Average',
+          avatar: 'profile40.png',
+          rating: 2.5
+        })
       })
 
       expect(reducer(nextState, action).get('employees').toJS()).to.deep.equal(expected.toJS())
