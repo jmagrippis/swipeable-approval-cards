@@ -41,6 +41,12 @@ const maxWidths = {
   }
 }
 
+const shadows = {
+  shadow1Black5: {
+    boxShadow: '0 .25rem .25rem .25rem rgba( 0, 0, 0, .05 )'
+  }
+}
+
 const skins = {
   bgWhite: {
     backgroundColor: '#fff'
@@ -50,6 +56,9 @@ const skins = {
   },
   black70: {
     color: 'rgba(0, 0, 0, .7)'
+  },
+  orangeyYellow: {
+    color: '#F6A247'
   }
 }
 
@@ -84,6 +93,10 @@ const spacing = {
   },
   pb3: {
     paddingBottom: '1rem'
+  },
+  ph2: {
+    paddingLeft: '.5rem',
+    paddingRight: '.5rem'
   },
   pa2Ns: {
     '@media screen and (min-width: 48em)': {
@@ -130,6 +143,7 @@ const styles = StyleSheet.create(Object.assign(
   fontFamilies,
   heights,
   maxWidths,
+  shadows,
   skins,
   spacing,
   textAlign,
