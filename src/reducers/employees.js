@@ -61,15 +61,15 @@ const mockFetchEmployees = (endpoint) => {
           rating: 2.5
         },
         44: {
-          id: 15,
-          name: 'Bob Burger',
+          id: 44,
+          name: 'Camille Comely',
           avatar: 'assets/images/4/avatar.jpg',
           rating: 3.3
         },
         51: {
-          id: 27,
-          name: 'Camille Comely',
-          avatar: 'assets/images/2/avatar.jpg',
+          id: 51,
+          name: 'Bob Burger',
+          avatar: 'assets/images/5/avatar.jpg',
           rating: 4.2
         }
       }

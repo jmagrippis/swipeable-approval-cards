@@ -5,7 +5,7 @@ const Employee = new Record({
   name: undefined,
   avatar: '/assets/images/default.png',
   rating: undefined,
-  approved: undefined
+  assessment: undefined
 },
 'Employee'
 )
